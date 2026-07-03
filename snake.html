@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Snake-Game</title>
     <style>
         #playArea{
-            height: 610px;
-            width: 1210px;
+            height: 500px;
+            width: 1000px;
+            position: relative;
             background-color: green;
             border: 10px solid black;
         }
@@ -57,7 +58,7 @@
                 state = 0
                 left = 0
                 up = 0
-                // area.innerText="GAME OVER"
+                area.innerText="GAME OVER"
                 
             }
 
@@ -88,8 +89,8 @@
             let generateFood = ()=>{
                 let a = document.createElement('div')
                 a.setAttribute('id','food')
-                a.style.left = `${(Math.trunc(Math.random()*(10**3))*20)%1200}px`
-                a.style.top = `${(Math.trunc(Math.random()*(10**3))*20)%600}px`
+                a.style.left = `${(Math.trunc(Math.random()*(10**3))*20)%1000}px`
+                a.style.top = `${(Math.trunc(Math.random()*(10**3))*20)%500}px`
                 area.appendChild(a);
             }
 
@@ -122,8 +123,8 @@
     
                 return (snake.every((x)=>{
                     return Number(x[0][0]) != snake_body_obj[direction][0] || Number(x[1][0]) != snake_body_obj[direction][1]}) 
-                    && (0<=snake_body_obj[direction][0] && snake_body_obj[direction][0]<=600 && 
-                    0<=snake_body_obj[direction][1] && 1200>=snake_body_obj[direction][1]))
+                    && (0<=snake_body_obj[direction][0] && snake_body_obj[direction][0]<=480 && 
+                    0<=snake_body_obj[direction][1] && 980>=snake_body_obj[direction][1]))
             }
 
             if (arr.includes(e.key) && obj[direction]!=e.key){
