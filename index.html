@@ -12,17 +12,27 @@
         }
 
         #snake{
-            height: 10px;
-            width: 10px;
+            position: relative;
+            display: flex;
+        }
+
+        .head,.body{
+            height: 20px;
+            width: 20px;
             background-color: red;
             position: relative;
+            border-radius: 25%;
         }
     </style>
 </head>
 <body>
     <h1>Press Space to begin the game </h1>
     <div id="Play-Area">
-        <div id="snake"></div>
+        <div id="snake">
+            <div class="head"></div>
+            <div class="body"></div>
+            <div class="body"></div>
+        </div>
     </div>
     <button id="reset">Reset</button>
     <script>
@@ -32,7 +42,7 @@
         let begin
         let state = 0
 
-        let snake = document.querySelector('#snake');
+        let head = document.querySelector('.head');
         let game = document.querySelector('#Play-Area')
         
         document.body.addEventListener('keyup',(event)=>{
@@ -71,7 +81,10 @@
                         top = 0
                         direction=''
                     }
-                    },50)
+                    let a = document.getElementsByClassName('body');
+                    console.log(a[0].style.left)
+                    
+                    },100)
                 }
                 else{
                     clearInterval(begin)
