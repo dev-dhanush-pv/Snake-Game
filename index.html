@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake-Game</title>
+    <style>
+        #Play-Area{
+            height: 500px;
+            width: 500px;
+            background-color: black;
+        }
+
+        #snake{
+            height: 10px;
+            width: 10px;
+            background-color: red;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>Press Space to begin the game </h1>
+    <div id="Play-Area">
+        <div id="snake"></div>
+    </div>
+    <button id="reset">Reset</button>
+    <script>
+        let direction = 'ArrowRight';
+        let left = 0;
+        let up = 0;
+        let begin
+        let state = 0
+
+        let snake = document.querySelector('#snake');
+        let game = document.querySelector('#Play-Area')
+        
+        document.body.addEventListener('keyup',(event)=>{
+            arr = ['ArrowUp','ArrowDown','ArrowLeft','ArrowRight']
+            obj = {'ArrowUp':'ArrowDown','ArrowLeft':'ArrowRight','ArrowRight':'ArrowLeft','ArrowDown':'ArrowUp'}
+            
+            if (arr.includes(event.key) && obj[direction]!=event.key){      
+                direction = event.key
+            }
+
+            else if (event.key==" "){
+                if (state==0){
+                    state = 1
+                    begin = setInterval(()=>{
+                    if (direction=='ArrowUp'){
+                        up -= 5
+                        snake.style.top = `${up}px`
+                    }
+                    else if (direction == 'ArrowDown'){
+                        up += 5
+                        snake.style.top = `${up}px`
+                    }
+                    else if (direction == 'ArrowLeft'){
+                        left -= 5
+                        snake.style.left = `${left}px`
+                    }
+                    else if (direction == 'ArrowRight'){
+                        left += 5
+                        snake.style.left = `${left}px`
+                    }
+
+                    if (left<0 || left>450 || up<0 || up>450 ){
+                        clearInterval(begin)
+                        state=0
+                        left = 0
+                        top = 0
+                        direction=''
+                    }
+                    },50)
+                }
+                else{
+                    clearInterval(begin)
+                    state = 0
+                }   
+            }
+            else if (event.key=="Enter"){
+                clearInterval(begin)
+                direction = 'ArrowRight'
+                left = 0
+                up = 0
+                snake.style.left = left
+                snake.style.top = up 
+            }
+
+
+        })
+    </script>
+</body>
+</html>
