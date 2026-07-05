@@ -1,0 +1,24 @@
+#playArea
+{
+    height: 500px;
+    width: 1000px;
+    position: relative;
+    background-color: green;
+    border: 10px solid black;
+}
+
+#head,.body{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    display: inline;
+    background-color : red;
+    border-radius: 25%;
+}
+
+#food{
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    position: absolute;
+}
