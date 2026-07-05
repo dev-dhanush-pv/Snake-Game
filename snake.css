@@ -19,6 +19,14 @@
 #food{
     height: 20px;
     width: 20px;
+    border-radius: 50%;
     background-color: white;
     position: absolute;
+}
+
+.lev-btn{
+    height: 30px;
+    width: 200px;
+    background-color: goldenrod;
+    text-align: center;
 }
