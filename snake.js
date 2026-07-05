@@ -90,60 +90,59 @@ let direction = 'ArrowDown';
         if (arr.includes(e.key) && obj[direction]!=e.key){
             direction = e.key
         }
-            else if (e.key==" "){
-                if (state==0){
-                    state = 1
-                    begin = setInterval(()=>{
+        else if (e.key==" "){
+            if (state==0){
+                state = 1
+                begin = setInterval(()=>{
 
-                        if (direction=='ArrowUp'){
-                            if (valid_move()){
-                                up -= 20        
-                                move(up,left)
-                                eat()
-                            }
-                            else {gameOver()}      
+                    if (direction=='ArrowUp'){
+                        if (valid_move()){
+                             up -= 20        
+                            move(up,left)
+                            eat()
                         }
-                        else if (direction=='ArrowDown'){
-                            if (valid_move()){
-                                up+=20
-                                move(up,left)
-                                eat()
-                            }
-                            else{gameOver()}
+                        else {gameOver()}      
+                    }
+                    else if (direction=='ArrowDown'){
+                        if (valid_move()){
+                            up+=20
+                            move(up,left)
+                            eat()
                         }
-                        else if (direction == 'ArrowLeft'){
-                            if (valid_move()){
-                                left-=20
-                                move(up,left)
-                                eat()
-                            }
-                            else{gameOver()}
+                        else{gameOver()}
+                    }
+                    else if (direction == 'ArrowLeft'){
+                        if (valid_move()){
+                            left-=20
+                            move(up,left)
+                            eat()
                         }
-                        else if (direction == 'ArrowRight'){
-                            if (valid_move()){
-                                left+=20
-                                move(up,left)
-                                eat()
-                            }
-                            else{gameOver()}
+                        else{gameOver()}
+                    }
+                    else if (direction == 'ArrowRight'){
+                        if (valid_move()){
+                            left+=20
+                            move(up,left)
+                            eat()
                         }
-                    },150)
-                }
-                else{
-                    state = 0
-                    clearInterval(begin)
-                }
+                        else{gameOver()}
+                    }
+                },150)
             }
+            else{
+                state = 0
+                clearInterval(begin)
+            }
+        }
 
-            else if (e.key=='Enter'){
-                if (state==1){
-                    gameOver()
-                }
-                else{
-                    area.innerText=''
-                }
+        else if (e.key=='Enter'){
+            if (state==1){
+                gameOver()
             }
-            
-        })
+            else{
+                area.innerText=''
+            }
+        }       
+    })
 
     
